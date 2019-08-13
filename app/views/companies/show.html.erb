@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @company.title %>
+</p>
+
+<p><% @company.users.each do |u| %>
+  <%= u.email %>
+<% end %></p>
+
+<% if user_signed_in?%>
+<div>
+  <%= link_to 'Edit', edit_company_path(@company) %> |
+            <% if policy(@company).destroy? %>
+                <%= link_to "Delete |", @company, method: :delete %>
+            <% end %>
+  <%= link_to 'Back', companies_path %>
+</div>
+<% else %>
+<% end %>
